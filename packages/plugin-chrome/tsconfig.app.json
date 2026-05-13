@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      // 让 TypeScript 能够解析 core 源码
+      "@ui-differ/core": ["../ui-differ-core/src/index.ts"],
+      "@ui-differ/connection-tools": ["../connection-tools/src/index.ts"]
+    }
+  },
+  "include": ["src", "vite-env.d.ts"]
+}

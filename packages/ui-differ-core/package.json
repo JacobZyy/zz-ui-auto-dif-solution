@@ -1,0 +1,32 @@
+{
+  "name": "@ui-differ/core",
+  "version": "1.0.0",
+  "description": "UI Differ Core Algorithm Library",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "echo \"📦 [Core Library] Watching for changes...\" && vite build --watch --mode development",
+    "clean": "rm -rf dist",
+    "clean:modules": "rm -rf ./node_modules"
+  },
+  "peerDependencies": {
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.26",
+    "vite-plugin-dts": "^4.5.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

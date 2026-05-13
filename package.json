@@ -1,0 +1,78 @@
+{
+  "name": "ui-differ-monorepo",
+  "version": "1.0.5",
+  "private": true,
+  "description": "UI Differ Monorepo",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "engines": {
+    "node": ">=16.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "scripts": {
+    "build": "pnpm build:sequential",
+    "build:sequential": "tsx scripts/build-sequential.ts",
+    "build:parallel": "pnpm -r build",
+    "build:core": "pnpm --filter @ui-differ/core build",
+    "dev": "pnpm dev:sequential",
+    "dev:sequential": "tsx scripts/dev-sequential.ts",
+    "dev:parallel": "pnpm -r --parallel dev",
+    "dev:mcp": "pnpm --filter @ui-differ/ai-tools mcp:server",
+    "dev:core": "pnpm --filter @ui-differ/core dev",
+    "dev:connection-tools": "pnpm --filter @ui-differ/connection-tools dev",
+    "dev:web-tester": "pnpm --filter @ui-differ/web-tester dev",
+    "dev:chrome": "pnpm --filter @ui-differ/plugin-chrome dev",
+    "dev:mastergo": "pnpm --filter @ui-differ/plugin-master-go dev",
+    "clean": "pnpm -r clean",
+    "clean:modules": "pnpm -r clean:modules && rm -rf node_modules",
+    "single-fn-test:watch": "tsx test.ts --watch",
+    "prepare": "npx simple-git-hooks"
+  },
+  "dependencies": {
+    "@alita/chalk": "^1.1.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "@zumer/snapdom": "^2.0.1",
+    "ahooks": "^3.9.6",
+    "antd": "^6.1.3",
+    "dayjs": "^1.11.19",
+    "immer": "^10.2.0",
+    "ky": "^1.14.2",
+    "radash": "^12.1.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "reset-css": "^5.0.2",
+    "tailwindcss": "^4.1.18",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^6.7.3",
+    "@eslint-react/eslint-plugin": "^2.5.1",
+    "@iconify/react": "^6.0.2",
+    "@mastergo/plugin-typings": "^2.10.0",
+    "@types/chrome": "^0.1.32",
+    "@types/node": "^24.10.4",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@unocss/eslint-plugin": "^66.5.12",
+    "@vitejs/plugin-react": "^5.1.2",
+    "eslint": "^9.39.2",
+    "eslint-plugin-format": "^1.1.0",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "execa": "^8.0.1",
+    "lint-staged": "^16.2.7",
+    "simple-git-hooks": "^2.13.1",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3",
+    "unocss": "^66.5.12",
+    "vite": "^6.4.1",
+    "vite-plugin-zip-pack": "^1.2.4"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,mjs,cjs,vue,scss,css,html,json,jsonc,json5,yaml,yml,toml}": "eslint --fix"
+  }
+}

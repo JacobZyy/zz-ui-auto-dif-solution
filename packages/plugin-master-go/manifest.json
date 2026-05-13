@@ -1,0 +1,15 @@
+{
+  "name": "zz-ui-differ",
+  "id": 179324813369599,
+  "main": "dist/main.js",
+  "ui": "dist/index.html",
+  "api": "1.0.0",
+  "editor_type": [
+    "canvas",
+    "devMode"
+  ],
+  "capabilities": [
+    "inspect"
+  ],
+  "permissions": ["currentuser"]
+}

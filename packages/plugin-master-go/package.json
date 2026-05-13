@@ -1,0 +1,31 @@
+{
+  "name": "@ui-differ/plugin-master-go",
+  "version": "0.0.7",
+  "engines": {
+    "node": ">=14.14.0"
+  },
+  "scripts": {
+    "dev": "echo \"🚀 [MasterGo Plugin] Starting development build...\" && pnpm dev:ui & pnpm dev:main",
+    "dev:ui": "echo \"📱 [MasterGo UI] Watching UI changes...\" && cross-env TARGET=ui NODE_ENV=development vite build --mode development -w",
+    "dev:main": "echo \"⚙️  [MasterGo Main] Watching main logic changes...\" && cross-env TARGET=main NODE_ENV=development vite build --mode development -w",
+    "build": "pnpm build:ui && pnpm build:main",
+    "clean": "rm -rf ../../dist/plugin-master-go ../../dist/plugin-master-go-*.zip",
+    "clean:modules": "rm -rf ./node_modules",
+    "build:ui": "cross-env TARGET=ui vite build",
+    "build:main": "cross-env TARGET=main vite build"
+  },
+  "dependencies": {
+    "@ui-differ/connection-tools": "workspace:^",
+    "@ui-differ/core": "workspace:^",
+    "@ui-differ/mastergo-shared": "workspace:^",
+    "clipboard": "^2.0.11",
+    "react-json-view": "^1.21.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@types/babel__core": "^7.20.5",
+    "cross-env": "^7.0.3",
+    "vite-plugin-html": "^3.2.2",
+    "vite-plugin-singlefile": "^2.3.0"
+  }
+}

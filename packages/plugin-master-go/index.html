@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // 隐藏warn输出（text有superlink的warn提示，多了以后很影响速度）
+      console.warn = (..._args) => {}
+    </script>
+    <script type="module" src="./ui/index.tsx"></script>
+  </body>
+</html>

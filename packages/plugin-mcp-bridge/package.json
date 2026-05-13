@@ -1,0 +1,27 @@
+{
+  "name": "@ui-differ/plugin-mcp-bridge",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm dev:ui & pnpm dev:main",
+    "dev:ui": "cross-env TARGET=ui NODE_ENV=development vite build --mode development -w",
+    "dev:main": "cross-env TARGET=main NODE_ENV=development vite build --mode development -w",
+    "build": "pnpm build:ui && pnpm build:main",
+    "clean": "rm -rf ../../dist/plugin-mcp-bridge ../../dist/plugin-mcp-bridge-*.zip",
+    "clean:modules": "rm -rf ./node_modules",
+    "build:ui": "cross-env TARGET=ui vite build",
+    "build:main": "cross-env TARGET=main vite build"
+  },
+  "dependencies": {
+    "@ui-differ/mastergo-shared": "workspace:^",
+    "zustand": "^5.0.9"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "vite": "^6.0.0",
+    "vite-plugin-html": "^3.2.2",
+    "vite-plugin-singlefile": "^2.3.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "转转UI检测工具",
+  "id": 181671972997071,
+  "main": "dist/main.js",
+  "ui": "dist/index.html",
+  "editor_type": [
+    "canvas"
+  ],
+  "permissions": ["currentuser"]
+}

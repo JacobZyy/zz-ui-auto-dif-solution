@@ -1,0 +1,30 @@
+{
+  "name": "@ui-differ/ui-detect-plugin",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=14.14.0"
+  },
+  "scripts": {
+    "dev": "echo \"🚀 [UI Detect Plugin] Starting development build...\" && pnpm dev:ui & pnpm dev:main",
+    "dev:ui": "echo \"📱 [UI Detect Plugin UI] Watching UI changes...\" && cross-env TARGET=ui NODE_ENV=development vite build --mode development -w",
+    "dev:main": "echo \"⚙️  [UI Detect Plugin Main] Watching main logic changes...\" && cross-env TARGET=main NODE_ENV=development vite build --mode development -w",
+    "build": "pnpm build:ui && pnpm build:main",
+    "clean": "rm -rf ../../dist/ui-detect-plugin ../../dist/ui-detect-plugin-*.zip",
+    "clean:modules": "rm -rf ./node_modules",
+    "build:ui": "cross-env TARGET=ui vite build",
+    "build:main": "cross-env TARGET=main vite build"
+  },
+  "dependencies": {
+    "@ui-differ/connection-tools": "workspace:^",
+    "@ui-differ/core": "workspace:^",
+    "@ui-differ/mastergo-shared": "workspace:^",
+    "zustand": "^5.0.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@types/babel__core": "^7.20.5",
+    "cross-env": "^7.0.3",
+    "vite-plugin-html": "^3.2.2",
+    "vite-plugin-singlefile": "^2.3.0"
+  }
+}

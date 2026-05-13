@@ -1,0 +1,58 @@
+/** 有子节点的节点类型 */
+export type NodeWithChild = GroupNode | FrameNode | ComponentNode | ComponentSetNode | InstanceNode
+
+/** 无子节点的节点类型 */
+export type NodeNoChild
+  = | PenNode
+    | StarNode
+    | LineNode
+    | EllipseNode
+    | PolygonNode
+    | RectangleNode
+    | TextNode
+    | SliceNode
+    | BooleanOperationNode
+    | ConnectorNode
+
+export type NodeWithoutFillsAndStrokes = SliceNode | ConnectorNode
+
+export const nodeWithChildSet = new Set<SceneNode['type']>(['FRAME', 'COMPONENT', 'COMPONENT_SET', 'GROUP', 'INSTANCE'])
+export const nodeNoChildSet = new Set<SceneNode['type']>(['BOOLEAN_OPERATION', 'CONNECTOR', 'ELLIPSE', 'LINE', 'PEN', 'POLYGON', 'RECTANGLE', 'SLICE', 'STAR', 'TEXT'])
+export const nodeWithoutFillsAndStrokesSet = new Set<SceneNode['type']>(['SLICE', 'CONNECTOR'])
+export const DESIGN_NODE_PREFIX = '~$$MASTER_GO_UI_DIFFER_NODE_INFO$$~'
+
+export interface RootNodeOffsetInfo {
+  x: number
+  y: number
+  height: number
+  id: string
+}
+
+export interface RootNodeBoundingOffsetInfo {
+  x: number
+  y: number
+  height: number
+  id: string
+}
+
+export type NodeCanBeMask
+  = | GroupNode
+    | FrameNode
+    | PenNode
+    | StarNode
+    | LineNode
+    | EllipseNode
+    | PolygonNode
+    | RectangleNode
+    | TextNode
+    | ComponentNode
+    | ComponentSetNode
+    | InstanceNode
+    | BooleanOperationNode
+
+export const nodeCanBeMaskSet = new Set<SceneNode['type']>(['GROUP', 'FRAME', 'RECTANGLE', 'TEXT', 'LINE', 'ELLIPSE', 'POLYGON', 'STAR', 'PEN', 'COMPONENT', 'COMPONENT_SET', 'INSTANCE', 'BOOLEAN_OPERATION'])
+
+export const iconShapeNodeTypeSet = new Set<SceneNode['type']>(['PEN', 'STAR', 'LINE', 'ELLIPSE', 'POLYGON', 'BOOLEAN_OPERATION'])
+
+/** 蒙版组合节点名字的后缀 */
+export const MASK_REPLACE_SUFFIX = '-mask-replace'

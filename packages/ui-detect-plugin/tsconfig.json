@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": ["./*"],
+      // 开发模式下让 TypeScript 也能解析 core 源码
+      "@ui-differ/core": ["../ui-differ-core/src/index.ts"],
+      "@ui-differ/connection-tools": ["../connection-tools/src/index.ts"],
+      "@ui-differ/mastergo-shared/ui": ["../mastergo-shared/src/ui/index.ts"],
+      "@ui-differ/mastergo-shared/lib": ["../mastergo-shared/src/lib/index.ts"]
+    },
+    "outDir": "../dist",
+    "esModuleInterop": false,
+    "skipLibCheck": false
+  },
+  "include": [
+    "./ui/**/*.ts",
+    "./ui/**/*.tsx",
+    "./pages/**/*.ts",
+    "./pages/**/*.tsx",
+    "./stores/**/*.ts",
+    "./typings/*.d.ts",
+    "./lib/**/*.ts",
+    "./messages/**/*.ts",
+    "./vite-env.d.ts"
+  ]
+}

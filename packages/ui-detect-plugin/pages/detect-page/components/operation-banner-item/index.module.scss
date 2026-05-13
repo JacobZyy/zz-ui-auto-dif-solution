@@ -1,0 +1,104 @@
+.operation-banner {
+  display: flex;
+  width: 100%;
+  padding: var(--paddingSM, 12px) 0;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: var(--borderRadiusXL, 12px);
+  border: var(--lineWidth, 1px) solid var(--Button-defaultHoverBorderColor, #4096ff);
+  background: var(--colorBgBase, #fff);
+}
+
+.operation-main-banner {
+  display: flex;
+  padding: 0 var(--paddingSM, 12px);
+  align-items: center;
+  gap: var(--paddingXS, 8px);
+}
+
+.operation-main-order {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  justify-content: center;
+  align-items: center;
+  color: var(--colorTextLightSolid, #fff);
+  /* Base/Strong */
+  font-size: var(--fontSize, 14px);
+  font-style: normal;
+  font-weight: var(--fontWeightStrong, 700);
+  border-radius: 12px;
+  background: var(--colorPrimary, #1677ff);
+  flex-shrink: 0;
+}
+
+.operation-main-content {
+  display: flex;
+  height: 48px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1 0 0;
+}
+
+.operation-main-content-title {
+  color: var(--colorText, rgba(0, 0, 0, 0.88));
+  font-size: var(--fontSize, 14px);
+  font-style: normal;
+  font-weight: var(--fontWeightNormal, 400);
+  line-height: 22px; /* 157.143% */
+}
+.operation-main-content-subtitle {
+  color: var(--colorTextSecondary, rgba(0, 0, 0, 0.65));
+  font-size: var(--fontSizeXS, 12px);
+  font-style: normal;
+  font-weight: var(--fontWeightNormal, 400);
+  line-height: 18px; /* 163.636% */
+}
+
+.operation-main-optarea {
+  display: flex;
+  height: 48px;
+  align-items: center;
+  gap: var(--paddingXXS, 4px);
+}
+
+.operation-detail-container {
+  display: flex;
+  padding: 0 var(--paddingSM, 12px);
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.operation-detail-item {
+  display: flex;
+  height: 24px;
+  align-items: center;
+  gap: var(--paddingXS, 8px);
+  width: 100%;
+}
+
+.operation-detail-order {
+  color: var(--colorPrimary, #1677ff);
+  font-size: var(--fontSizeSM, 12px);
+  font-weight: var(--fontWeightStrong, 700);
+  line-height: 20px; /* 166.667% */
+}
+
+.operation-detail-content {
+  overflow: hidden;
+  line-clamp: 1;
+  text-overflow: ellipsis;
+  flex: 1 0 0;
+  min-width: 1px;
+  color: var(--colorTextSecondary, rgba(0, 0, 0, 0.65));
+  font-size: var(--fontSizeSM, 12px);
+  font-weight: var(--fontWeightNormal, 400);
+  line-height: 20px; /* 166.667% */
+}
+
+.operation-detail-btn-area {
+  display: flex;
+  align-items: center;
+  gap: var(--paddingXS, 8px);
+}

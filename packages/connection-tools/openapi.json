@@ -1,0 +1,768 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Node UI Diff Backend API",
+    "description": "API 文档"
+  },
+  "tags": [
+    {
+      "name": "多维表格记录",
+      "description": "飞书多维表格记录的增删改查操作"
+    }
+  ],
+  "components": {
+    "schemas": {},
+    "parameters": {}
+  },
+  "paths": {
+    "/lark/multi-table/records/create": {
+      "post": {
+        "tags": [
+          "多维表格记录"
+        ],
+        "summary": "新增记录",
+        "description": "在多维表格中新增一条记录",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fields": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "nullable": true
+                    }
+                  }
+                },
+                "required": [
+                  "fields"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "新增记录成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "record": {
+                          "type": "object",
+                          "properties": {
+                            "record_id": {
+                              "type": "string"
+                            },
+                            "fields": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "nullable": true
+                              }
+                            }
+                          },
+                          "required": [
+                            "fields"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "record"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lark/multi-table/records/update/{recordId}": {
+      "put": {
+        "tags": [
+          "多维表格记录"
+        ],
+        "summary": "更新记录",
+        "description": "更新多维表格中的一条记录",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "example": "rec123456"
+            },
+            "required": true,
+            "name": "recordId",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fields": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "nullable": true
+                    }
+                  }
+                },
+                "required": [
+                  "fields"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "更新记录成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "record": {
+                          "type": "object",
+                          "properties": {
+                            "record_id": {
+                              "type": "string"
+                            },
+                            "fields": {
+                              "type": "object",
+                              "additionalProperties": {
+                                "nullable": true
+                              }
+                            }
+                          },
+                          "required": [
+                            "fields"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "record"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lark/multi-table/records/query": {
+      "post": {
+        "tags": [
+          "多维表格记录"
+        ],
+        "summary": "查询记录",
+        "description": "查询多维表格中的记录",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "view_id": {
+                    "type": "string"
+                  },
+                  "field_names": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "sort": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "field_name": {
+                          "type": "string"
+                        },
+                        "desc": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "field_name"
+                      ]
+                    }
+                  },
+                  "filter": {
+                    "type": "object",
+                    "properties": {
+                      "conjunction": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "enum": [
+                              "and"
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "enum": [
+                              "or"
+                            ]
+                          }
+                        ]
+                      },
+                      "conditions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "field_name": {
+                              "type": "string"
+                            },
+                            "operator": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "nullable": true
+                            }
+                          },
+                          "required": [
+                            "field_name",
+                            "operator"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "automatic_fields": {
+                    "type": "boolean"
+                  },
+                  "page_token": {
+                    "type": "string"
+                  },
+                  "page_size": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "查询记录成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "has_more": {
+                          "type": "boolean"
+                        },
+                        "page_token": {
+                          "type": "string"
+                        },
+                        "total": {
+                          "type": "number"
+                        },
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "record_id": {
+                                "type": "string"
+                              },
+                              "fields": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "nullable": true
+                                }
+                              }
+                            },
+                            "required": [
+                              "fields"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "has_more",
+                        "total",
+                        "items"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lark/multi-table/records/delete/{recordId}": {
+      "delete": {
+        "tags": [
+          "多维表格记录"
+        ],
+        "summary": "删除记录",
+        "description": "删除多维表格中的一条记录",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "example": "rec123456"
+            },
+            "required": true,
+            "name": "recordId",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "删除记录成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "deleted": {
+                          "type": "boolean"
+                        },
+                        "record_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "deleted",
+                        "record_id"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lark/multi-table/records/batch/create": {
+      "post": {
+        "tags": [
+          "多维表格记录"
+        ],
+        "summary": "批量新增记录",
+        "description": "批量新增多维表格记录，最多 500 条",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "records": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "fields": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "required": [
+                        "fields"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "records"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "批量新增记录成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "records": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "record_id": {
+                                "type": "string"
+                              },
+                              "fields": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "nullable": true
+                                }
+                              }
+                            },
+                            "required": [
+                              "fields"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "records"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lark/multi-table/records/batch/update": {
+      "post": {
+        "tags": [
+          "多维表格记录"
+        ],
+        "summary": "批量更新记录",
+        "description": "批量更新多维表格记录，最多 500 条",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "records": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "record_id": {
+                          "type": "string"
+                        },
+                        "fields": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "required": [
+                        "record_id",
+                        "fields"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "records"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "批量更新记录成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "records": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "record_id": {
+                                "type": "string"
+                              },
+                              "fields": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "nullable": true
+                                }
+                              }
+                            },
+                            "required": [
+                              "fields"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "records"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lark/multi-table/records/batch/get": {
+      "post": {
+        "tags": [
+          "多维表格记录"
+        ],
+        "summary": "批量获取记录",
+        "description": "批量获取多维表格记录，最多 500 个",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "record_ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "field_names": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "record_ids"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "批量获取记录成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "records": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "record_id": {
+                                "type": "string"
+                              },
+                              "fields": {
+                                "type": "object",
+                                "additionalProperties": {
+                                  "nullable": true
+                                }
+                              }
+                            },
+                            "required": [
+                              "fields"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "records"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lark/multi-table/records/batch/delete": {
+      "post": {
+        "tags": [
+          "多维表格记录"
+        ],
+        "summary": "批量删除记录",
+        "description": "批量删除多维表格记录，最多 500 个",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "records": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": [
+                  "records"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "批量删除记录成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "records": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "deleted": {
+                                "type": "boolean"
+                              },
+                              "record_id": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "deleted",
+                              "record_id"
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "records"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

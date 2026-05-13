@@ -1,0 +1,26 @@
+{
+  "name": "@ui-differ/plugin-chrome",
+  "type": "module",
+  "version": "0.0.7",
+  "private": true,
+  "scripts": {
+    "dev": "echo \"🚀 [Chrome Plugin] Starting development server...\" && vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf ../../dist/plugin-chrome ../../dist/plugin-chrome-*.zip",
+    "clean:modules": "rm -rf ./node_modules"
+  },
+  "dependencies": {
+    "@ui-differ/connection-tools": "workspace:^",
+    "@ui-differ/core": "workspace:^",
+    "cookies-next": "^6.1.1",
+    "reset.css": "^2.0.2",
+    "sass": "^1.97.2",
+    "zustand": "^5.0.9"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.3.0",
+    "@types/chrome": "^0.1.32",
+    "postcss": "^8.5.6"
+  }
+}

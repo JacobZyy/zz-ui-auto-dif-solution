@@ -1,0 +1,11 @@
+{
+  "name": "ui-diff-mcp-bridge",
+  "main": "dist/main.js",
+  "id": 192929730745598,
+  "ui": "dist/index.html",
+  "api": "1.0.0",
+  "editor_type": [
+    "canvas"
+  ],
+  "permissions": ["currentuser"]
+}

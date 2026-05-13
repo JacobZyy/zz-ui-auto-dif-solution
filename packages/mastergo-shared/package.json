@@ -1,0 +1,35 @@
+{
+  "name": "@ui-differ/mastergo-shared",
+  "version": "1.0.0",
+  "description": "Shared React components and utilities for MasterGo plugins",
+  "exports": {
+    "./lib": {
+      "types": "./dist/lib.d.ts",
+      "import": "./dist/lib.mjs"
+    },
+    "./ui": {
+      "types": "./dist/ui.d.ts",
+      "import": "./dist/ui.mjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "echo \"📦 [MasterGo Shared] Watching for changes...\" && vite build --watch --mode development",
+    "clean": "rm -rf dist",
+    "clean:modules": "rm -rf ./node_modules"
+  },
+
+  "dependencies": {
+    "@ui-differ/connection-tools": "workspace:^",
+    "@ui-differ/core": "workspace:^"
+  },
+  "devDependencies": {
+    "vite-plugin-dts": "^4.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
